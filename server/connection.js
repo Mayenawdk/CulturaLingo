@@ -1,28 +1,13 @@
-
-const { MongoClient, ServerApiVersion } = require('mongodb');
-const uri = "mongodb//localhost:27017";
 const mongoose = require('mongoose');
+require('dotenv').config();
 
+const mongoURI = process.env.MONGO_URI || 'mongodb://localhost/culturalingo';
 
+mongoose.connect(mongoURI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
+.then(() => console.log('MongoDB connected successfully'))
+.catch((err) => console.error('MongoDB connection error:', err));
 
-const client = new MongoClient(uri, {
-  serverApi: {
-    version: ServerApiVersion.v1,
-    strict: true,
-    deprecationErrors: true,
-  }
-});
-
-async function run() {
-  try {
-   
-    await client.connect();
-   
-    await client.db("admin").command({ ping: 1 });
-    console.log("Pinged your deployment. You successfully connected to MongoDB!");
-  } finally {
-   
-    await client.close();
-  }
-}
-run().catch(console.dir);
+module.exports = mongoose;
