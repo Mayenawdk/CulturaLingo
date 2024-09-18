@@ -2,11 +2,16 @@
   "name": "culturalingo",
   "version": "1.0.0",
   "description": "Project 3",
-  "main": "eslint.config.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-<<<<<<<< HEAD:server/package.json
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "dev": "nodemon server.js",
+    "start:dev": "concurrently \"cd server && npm run server\" \"cd client && npm run dev\"",
+    "build": "cd client && npm run build",
+    "install": "cd server && npm i && cd ../client && npm i",
+    "client": "cd client && npm start",
+    "server": "cd server && nodemon server.js --ignore client"
   },
   "keywords": [],
   "author": "",
@@ -15,21 +20,10 @@
     "apollo-server": "^3.13.0",
     "dotenv": "^16.4.5",
     "graphql": "^16.9.0",
-    "mongodb": "^6.9.0",
-    "moongose": "^1.0.0"
-  }
-========
-    
-    "start:dev": "concurrently \"cd server && npm run server\" \"cd client && npm run dev\"",
-    "start": "npm run build && cd server && node server.js",
-    "server": "cd server nodemon server.js --ignore client",
-    "build": "cd client && npm run build",
-    "install": "cd server && npm i && cd ../client && npm i",
-    "client": "cd client && npm start"
-  
+    "mongodb": "^6.0.0",
+    "mongoose": "^6.13.2"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
->>>>>>>> cb6670260f991a7e7ac669be2c76ce486408c6de:package.json
+  "devDependencies": {
+    "nodemon": "^3.1.5"
+  }
 }
