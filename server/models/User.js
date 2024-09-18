@@ -1,9 +1,8 @@
-const moongose = require('./server/connection.js');
+const mongoose = require('./connection'); 
 
-const {Schema} = moongose;
+const { Schema } = mongoose; 
 
-//User schema
-
+// User schema
 const userSchema = new Schema({
     name: { type: String, required: true },
     user_id: {

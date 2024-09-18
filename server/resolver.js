@@ -1,5 +1,5 @@
 const User = require('./models/User');
-const Language = require('./models/Language');
+const Language = require('./models/languages');
 
 const resolvers = {
   Query: {
