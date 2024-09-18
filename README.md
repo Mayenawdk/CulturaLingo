@@ -1,2 +1,0 @@
-# CulturaLingo
-Project 3
