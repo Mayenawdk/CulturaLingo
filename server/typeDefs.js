@@ -7,6 +7,9 @@ const typeDefs = gql`
     name: String!
     email: String!
     img: String
+    favefood: String
+    favecountry: String
+    favecity: String
   }
 
   type Language {

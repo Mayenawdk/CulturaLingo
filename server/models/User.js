@@ -11,8 +11,20 @@ const userSchema = new Schema({
       },
       img: {
         type: Schema.Types.ObjectId,
-        ref: 'Images',
+        ref: 'Image',
         required: false
+      },
+      favefood: {
+        type: String,
+        default: "What's your favorite food?"
+      },
+      favecountry: {
+        type: String,
+        default: "What's your favorite country?"
+      },
+      favecity: {
+        type: String,
+        default: "What's your favorite city?"
       }
   });
   
