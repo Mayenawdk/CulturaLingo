@@ -10,6 +10,11 @@ const userSchema = new Schema({
         type: Schema.Types.ObjectId,
         default: () => new mongoose.Types.ObjectId()
       },
+      img: {
+        type: Schema.Types.ObjectId,
+        ref: 'Images',
+        required: false
+      }
   });
   
  

@@ -6,6 +6,7 @@ const typeDefs = gql`
     id: ID!
     name: String!
     email: String!
+    img: String
   }
 
   type Language {
@@ -23,6 +24,11 @@ const typeDefs = gql`
   type Mutation {
     addUser(name: String!, email: String!): User
     addLanguage(name: String!): Language
+  }
+
+  type Image{
+    id: ID!
+    picture: String!
   }
 `;
 
