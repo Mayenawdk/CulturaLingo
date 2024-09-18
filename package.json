@@ -1,20 +1,12 @@
 {
   "name": "culturalingo",
   "version": "1.0.0",
-  "description": "Project 3",
-  "main": "eslint.config.js",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    
-    "start:dev": "concurrently \"cd server && npm run server\" \"cd client && npm run dev\"",
-    "start": "npm run build && cd server && node server.js",
-    "server": "cd server nodemon server.js --ignore client",
-    "build": "cd client && npm run build",
-    "install": "cd server && npm i && cd ../client && npm i",
-    "client": "cd client && npm start"
-  
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "description": ""
 }
