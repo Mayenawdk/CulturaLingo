@@ -1,32 +1,26 @@
 require('dotenv').config();
 console.log('MONGODB_URI:', process.env.MONGODB_URI);
 
+const express = require('express');
+const { ApolloServer } = require('apollo-server-express');
 
-const { ApolloServer } = require('apollo-server');
-const mongoose = require('mongoose');
 const typeDefs = require('./typeDefs');
 const resolvers = require('./resolver');
 
-const MONGODB_URI = process.env.MONGODB_URI;
-if (!MONGODB_URI) {
-  console.error('MONGODB_URI is not defined in .env file');
-  process.exit(1);
-}
-
+const app = express();
+//l
 
 const PORT = process.env.PORT || 3001;
 
 
-
-
 const server = new ApolloServer({
   typeDefs,
-  resolvers
+  resolvers,
+  path: '/custom/graphql',
 });
 
+console.log(`GraphQL endpoint at: ${server.graphqlPath}`);
+app.listen(PORT, () => {
+  console.log(`Server running at http://localhost:${PORT}${server.graphqlPath}`);
+});  
 
-server.listen({ port: PORT }).then(({ url }) => {
-  console.log(`Server running at ${url}`);
-}).catch(err => {
-  console.error('Error starting the server', err);
-});

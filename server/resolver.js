@@ -1,6 +1,10 @@
 const User = require('./models/User');
 const Language = require('./models/languages');
 const Food = require('./models/Food');
+const axios = require ('axios');
+
+const API_URL = 'https://worldwide-restaurants.p.rapidapi.com/';
+const API_KEY = '449134927emsh5c9b7a554d90d46p17b74djsnca468ddc31ea';
 
 const resolvers = {
   Query: {
@@ -37,22 +41,6 @@ const resolvers = {
         name: args.name
       });
       return await language.save();
-    },
-    addFood: async (_, args) => {
-      const Food = new Food({
-        name: args.name,
-        location: args.location
-      });
-      return await food.save();
-    },
-
-    // referenced module 21 MERN > activity 10 > solved > schemas > reolvers.js line 25
-    updateFood: async (_, args) => {
-      return await Food.findByIdAndUpdate(
-        { _id: id },
-        { location },
-        { new: true }
-      );
     }
   }
 };
