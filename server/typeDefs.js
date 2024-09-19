@@ -5,6 +5,10 @@ const typeDefs = gql`
     id: ID!
     name: String!
     email: String!
+    img: String
+    favefood: String
+    favecountry: String
+    favecity: String
   }
 
   type Language {
@@ -62,6 +66,11 @@ addCity(name:String!,countryid:ID!): City
 addCountry(name:String!):Country
 
 }
+
+ type Image{
+    id: ID!
+    picture: String!
+  }
 `;
 
 module.exports = typeDefs;
