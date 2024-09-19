@@ -1,5 +1,6 @@
 const User = require('./models/User');
 const Language = require('./models/languages');
+const Food = require('./models/Food');
 
 const resolvers = {
   Query: {
@@ -14,6 +15,13 @@ const resolvers = {
     },
     language: async (parent, args) => {
       return await Language.findById(args.id);
+    },
+    Foods: async () => {
+      return await Food.find();
+    },
+    // im not sure this is correct i went based off geris work
+    Food: async (_, args) => {
+      return await Food.findById(args.id);
     }
   },
   Mutation: {
@@ -29,6 +37,22 @@ const resolvers = {
         name: args.name
       });
       return await language.save();
+    },
+    addFood: async (_, args) => {
+      const Food = new Food({
+        name: args.name,
+        location: args.location
+      });
+      return await food.save();
+    },
+
+    // referenced module 21 MERN > activity 10 > solved > schemas > reolvers.js line 25
+    updateFood: async (_, args) => {
+      return await Food.findByIdAndUpdate(
+        { _id: id },
+        { location },
+        { new: true }
+      );
     }
   }
 };
