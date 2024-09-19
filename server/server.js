@@ -8,7 +8,7 @@ const typeDefs = require('./typeDefs');
 const resolvers = require('./resolver');
 
 const app = express();
-
+//l
 
 const PORT = process.env.PORT || 3001;
 
@@ -22,4 +22,5 @@ const server = new ApolloServer({
 console.log(`GraphQL endpoint at: ${server.graphqlPath}`);
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}${server.graphqlPath}`);
-});
+});  
+
