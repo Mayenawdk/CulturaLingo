@@ -7,10 +7,10 @@ const connection = require("../config/connection");
 // Seed data
 const imgs = [
   {
-    picture: '/icons/koalaICON.jpg'
+    picture: '/icons/KoalaIcon.jpg'
   },
   {
-    picture: '../../public/icons/koalaICON.jpg'
+    picture: '../../public/icons/KoalaIcon.jpg'
   },
 ];
 
