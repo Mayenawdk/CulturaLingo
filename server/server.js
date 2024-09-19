@@ -15,14 +15,11 @@ const PORT = process.env.PORT || 3001;
 
 const server = new ApolloServer({
   typeDefs,
-  resolvers
+  resolvers,
+  path: '/custom/graphql',
 });
 
-
-server.listen({ port: PORT }).then(({ url }) => {
-  console.log(`Server running at ${url}`);
-}).catch(err => {
-  console.error('Error starting the server', err);
+console.log(`GraphQL endpoint at: ${server.graphqlPath}`);
+app.listen(PORT, () => {
+  console.log(`Server running at http://localhost:${PORT}${server.graphqlPath}`);
 });
-
-server.applyMiddleware({ app });
