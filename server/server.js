@@ -8,7 +8,7 @@ const typeDefs = require('./typeDefs');
 const resolvers = require('./resolver');
 
 const app = express();
-//l
+
 
 const PORT = process.env.PORT || 3001;
 
