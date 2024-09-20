@@ -19,6 +19,7 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
   path: '/graphql',
+  
   csrfPrevention: false,
 });
 
