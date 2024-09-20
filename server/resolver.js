@@ -41,8 +41,21 @@ const resolvers = {
         name: args.name
       });
       return await language.save();
+    },
+    // mern activity 9 > schemas
+    addFood: async (_, args) => {
+      return await Food.create(_, args);
+    },
+    // mern activity 10 > schemas
+    updateFood: async(_, args) => {
+      return await Food.findByIdAndUpdate(
+        { _id: id },
+        { location },
+        { new: true}
+      );
+    }
     }
   }
-};
+;
 
 module.exports = resolvers;
