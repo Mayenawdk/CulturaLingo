@@ -12,17 +12,19 @@ const resolvers = require('./resolver');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
+app.use(express.json());
 
 // start apollo server
 const server = new ApolloServer({
   typeDefs,
   resolvers,
   path: '/graphql',
+  csrfPrevention: false,
 });
 
 async function startServer() {
   await server.start();
-  app.use('/custom/graphql', expressMiddleware(server));
+  app.use('/graphql', expressMiddleware(server));
 
   app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}/graphql`);
