@@ -26,7 +26,7 @@ const resolvers = {
     // im not sure this is correct i went based off geris work
     Food: async (_, args) => {
       return await Food.findById(args.id);
-    }
+    },
   },
   Mutation: {
     addUser: async (parent, args) => {
