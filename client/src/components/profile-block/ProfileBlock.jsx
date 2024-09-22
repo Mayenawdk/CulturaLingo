@@ -15,6 +15,9 @@ const ProfileBlock = () => {
         favecountry: "Spain",
         favecity: "Salem, MA"
     };
+
+    // referenced 21 mern activity 19 client src components profile form index.jsx
+    
     const [addUser, {error}] = useMutation(ADD_USER, {
         refetchQueries: [
             QUERY_USERS,
