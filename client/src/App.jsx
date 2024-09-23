@@ -1,38 +1,27 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import { Outlet } from 'react-router-dom';
+
+// i believe we need to import the header here 
+
 import './App.css'
-import ProfileBlock from './components/profile-block/ProfileBlock'
+import ProfileBlock from './components/profile-block/ProfileBlock';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+const client = new ApolloClient({
+  uri: '/http://localhost:3001/graphql',
+  cache: new InMemoryCache(),
+});
+
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-    <ProfileBlock />
-    <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    
+     <ApolloProvider client={client}>
+      <ProfileBlock />
+      <div className='flex-column justify-flex-start min-100-vh'>
+        <Outlet />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
-
-export default App
+     </ApolloProvider>
+  
+  );
+}  
+export default App;

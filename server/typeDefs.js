@@ -27,6 +27,12 @@ const typeDefs = gql`
     name: String!
   }
 
+  type Food {
+    id: ID!
+    name: String!
+    location: String!  
+  }
+
   type Query {
     users: [User]
     user(id: ID!): User
@@ -36,6 +42,8 @@ const typeDefs = gql`
     countries: [Country]
     city(id: ID): City
     country(id: ID): Country
+    Foods: [Food]
+    Food(id: ID!): Food
   }
 
   type Mutation {
@@ -43,6 +51,8 @@ const typeDefs = gql`
     addLanguage(name: String!): Language
     addCity(name: String!, countryid: ID!): City
     addCountry(name: String!): Country
+    addFood(name: String!): Food
+    updateFood(name: String!): Food
   }
 `;
 
