@@ -26,7 +26,7 @@ const server = new ApolloServer({
   csrfPrevention: false,
 });
 
-//api endpoint
+//   api endpoint 
 app.get('/api/restaurants', async (req, res) => {
   try {
     const restaurants = await Restaurant.find();
@@ -51,7 +51,7 @@ startServer().catch(err => {
   console.error('Error starting the server', err);
 });
 
-//deleted comments
+
 
 
 
