@@ -10,7 +10,7 @@ const imgs = [
     picture: '/icons/KoalaIcon.jpg'
   },
   {
-    picture: '../../public/icons/KoalaIcon.jpg'
+    picture: '/icons/KoalaIcon.jpg'
   },
 ];
 
