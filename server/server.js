@@ -7,16 +7,12 @@ const { expressMiddleware } = require('@apollo/server/express4');
 const path = require('path');
 const cors = require('cors');
 
-
-
-
-const typeDefs = require('./typeDefs');
-const resolvers = require('./resolver'); 
-
 const app = express();
 const PORT = process.env.PORT || 3001;
 app.use(express.json());
 
+const typeDefs = require('./typeDefs');
+const resolvers = require('./resolver'); 
 
 // trying this, keep seeing if react app and apollo server are on different ports must use cors middleware
 app.use(cors());
@@ -27,7 +23,6 @@ const server = new ApolloServer({
   resolvers,
   path: '/graphql',
   playground: true,
-
   csrfPrevention: false,
 });
 
