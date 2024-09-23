@@ -23,6 +23,21 @@ const imgs = [
   { picture: "/icons/TurtleIcon.jpg" }, { picture: "/icons/WolfIcon.jpg" }, { picture: "/icons/ZebraIcon.jpg" },
 ];
 
+const user = [
+  {
+    name: "Carmen",
+    favefood: "Bibimbap",
+    favecountry: "Spain",
+    favecity: "Lefkada, Greece"
+  },
+  {
+    name: "Crystal",
+    favefood: "Lasagna",
+    favecountry: "Mexico",
+    favecity: "Rio, Brazil"
+  }
+]
+
 // Connects to server
 connection.once("open", async () => {
   console.log("connected");
@@ -32,6 +47,13 @@ connection.once("open", async () => {
 
   // Adds seed data to database
   await Image.collection.insertMany(imgs);
+  const images = await Images.find();
+  user.forEach(u => {
+    u.img = images[Math.floor(Math.random() * images.length)].id;
+  });
+
+  await User.deleteMany({});
+  await User.collection.insertMany(user);
 
   console.info("Seeding complete!");
   process.exit(0);
