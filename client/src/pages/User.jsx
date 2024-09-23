@@ -1,7 +1,7 @@
 import { useQuery } from "@apollo/client";
 import ProfileBlock from "../components/profile-block/ProfileBlock";
 import { QUERY_USERS } from "../utils/queries";
-import { Container, Row, Col, Card, Image, Form, Button } from 'react-bootstrap';
+import { Container, Row, Col, Card, Image, Link, Form, Button } from 'react-bootstrap';
 
 const Users = () => {
 
@@ -53,30 +53,7 @@ const Users = () => {
                                 <Form.Label>Favorite City</Form.Label>
                                 <Form.Control type="text" id="favecity" />
                             </Form.Group>
-                            <Button varient="primary" type="submit" />
-
-
-
-                            <Row>
-                                <Col>
-                                    <Image src={user.img.picture} roundedCircle />
-                                </Col>
-                                <Card>
-                                    <Card.Body>{user.favefood}</Card.Body>
-                                </Card>
-                            </Row>
-                            <Row>
-                                <Col>
-                                    <Card>
-                                        <Card.Body>{user.favecountry}</Card.Body>
-                                    </Card>
-                                </Col>
-                                <Col>
-                                    <Card>
-                                        <Card.Body>{user.favecity}</Card.Body>
-                                    </Card>
-                                </Col>
-                            </Row>
+                            <Button varient="primary" type="submit">Submit</Button>
                         </Form>
                     </div>
                 )}
