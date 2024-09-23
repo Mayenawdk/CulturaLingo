@@ -28,7 +28,8 @@ const ProfileBlock = () => {
     const handleAddUser = async (event) => {
         event.preventDefault();
 
-    try {
+    try 
+    {
         await addUser({
             variables: { name },
         });
