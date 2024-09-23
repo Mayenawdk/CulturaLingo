@@ -26,6 +26,18 @@ const server = new ApolloServer({
   csrfPrevention: false,
 });
 
+//api endpoint
+app.get('/api/restaurants', async (req, res) => {
+  try {
+    const restaurants = await Restaurant.find();
+    res.json(restaurants);
+  } catch (error) {
+    console.error('Error fetching restaurants:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+
 async function startServer() {
   await server.start();
   app.use('/graphql', expressMiddleware(server));
