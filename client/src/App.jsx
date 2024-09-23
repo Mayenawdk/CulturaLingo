@@ -4,24 +4,39 @@ import { Outlet } from 'react-router-dom';
 // i believe we need to import the header here 
 
 import './App.css'
-import ProfileBlock from './components/profile-block/ProfileBlock';
-import 'bootstrap/dist/css/bootstrap.min.css';
-
-const client = new ApolloClient({
-  uri: 'http://localhost:3001/graphql',
-  cache: new InMemoryCache(),
-});
+import ProfileBlock from './components/profile-block/ProfileBlock'
+import 'bootstrap/dist/css/bootstrap.min.css'; 
+import Header from './header';
+import HomePage from './homePage';
 
 function App() {
   return (
-    
-     <ApolloProvider client={client}>
-      <ProfileBlock />
-      <div className='flex-column justify-flex-start min-100-vh'>
-        <Outlet />
+    <>
+      <Header />
+      <HomePage />  {/* This will include the new 3-column layout */}
+      <ProfileBlock />  {/* Retained your ProfileBlock component here */}
+      <div>
+        <a href="https://vitejs.dev" target="_blank">
+          <img src={viteLogo} className="logo" alt="Vite logo" />
+        </a>
+        <a href="https://react.dev" target="_blank">
+          <img src={reactLogo} className="logo react" alt="React logo" />
+        </a>
       </div>
-     </ApolloProvider>
-  
-  );
-}  
-export default App;
+      <h1>Vite + React</h1>
+      <div className="card">
+        <button onClick={() => setCount((count) => count + 1)}>
+          count is {count}
+        </button>
+        <p>
+          Edit <code>src/App.jsx</code> and save to test HMR
+        </p>
+      </div>
+      <p className="read-the-docs">
+        Click on the Vite and React logos to learn more
+      </p>
+    </>
+  )
+}
+
+export default App
