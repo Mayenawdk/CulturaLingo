@@ -1,7 +1,7 @@
 import { useQuery } from "@apollo/client";
 import ProfileBlock from "../components/profile-block/ProfileBlock";
 import { QUERY_USERS } from "../utils/queries";
-import { Container, Row, Col, Card, Image, Link, Form, Button } from 'react-bootstrap';
+import { Container, Row, Col, Card, Image, Form, Button } from 'react-bootstrap';
 
 const Users = () => {
 
