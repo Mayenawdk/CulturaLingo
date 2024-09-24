@@ -20,11 +20,11 @@ const resolvers = {
     language: async (parent, args) => {
       return await Language.findById(args.id);
     },
-    Foods: async () => {
+    foods: async () => {
       return await Food.find();
     },
     // im not sure this is correct i went based off geris work
-    Food: async (_, args) => {
+    food: async (_, args) => {
       return await Food.findById(args.id);
     },
   },

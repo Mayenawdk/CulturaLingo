@@ -7,45 +7,49 @@ import ProfileBlock from './components/profile-block/ProfileBlock';
 import Header from './header';
 import React from 'react';
 
+// Create the query client
+const queryClient = new QueryClient();
+
 const client = new ApolloClient({
   uri: 'http://localhost:3001/graphql',
   cache: new InMemoryCache(),
 });
 
-const queryClient = new QueryClient();
-
 // Function to fetch restaurant data
 const fetchRestaurants = async () => {
   const response = await fetch('https://worldwide-restaurants.p.rapidapi.com/restaurants/list', {
-      method: 'GET',
-      headers: {
-          'x-rapidapi-host': 'worldwide-restaurants.p.rapidapi.com',
-          'x-rapidapi-key': '449134927emsh5c9b7a554d90d46p17b74djsnca468ddc31ea',
-          'Content-Type': 'application/json'
-      }
+    method: 'GET',
+    headers: {
+      'x-rapidapi-host': 'worldwide-restaurants.p.rapidapi.com',
+      'x-rapidapi-key': 'YOUR_API_KEY_HERE',
+      'Content-Type': 'application/json'
+    }
   });
 
   if (!response.ok) {
-      throw new Error('Network response was not ok');
+    throw new Error('Network response was not ok');
   }
   return response.json();
 };
 
 // Display restaurant data
 const RestaurantList = () => {
-  const { data, error, isLoading } = useQuery(['restaurants'], fetchRestaurants);
+  const { data, error, isLoading } = useQuery({
+    queryKey: ['restaurants'], // The key for the query
+    queryFn: fetchRestaurants,  // The function to fetch data
+  });
 
-  if (isLoading) return <p>Loading</p>;
+  if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error fetching data: {error.message}</p>;
 
   return (
-      <ul>
-          {data.restaurants.map((restaurant) => (
-              <li key={restaurant.id}>
-                  {restaurant.name} - {restaurant.cuisine}
-              </li>
-          ))}
-      </ul>
+    <ul>
+      {data.restaurants.map((restaurant) => (
+        <li key={restaurant.id}>
+          {restaurant.name} - {restaurant.cuisine}
+        </li>
+      ))}
+    </ul>
   );
 };
 
@@ -66,26 +70,28 @@ const addRestaurant = async (newRestaurant) => {
   return response.json();
 };
 
-//add a restaurant using mutations
+
+/// Add a restaurant using mutations
 const AddRestaurant = () => {
-  const mutation = useMutation(addRestaurant, {
-      onSuccess: () => {
-          queryClient.invalidateQueries(['restaurants']);
-      }
+  const mutation = useMutation({
+    mutationFn: addRestaurant, // The function to add the restaurant
+    onSuccess: () => {
+      queryClient.invalidateQueries(['restaurants']); // Invalidate the 'restaurants' query
+    },
   });
 
   const handleAddRestaurant = () => {
-      const newRestaurant = { id: Date.now(), name: 'New Restaurant', cuisine: 'Italian' };
-      mutation.mutate(newRestaurant);
+    const newRestaurant = { id: Date.now(), name: 'New Restaurant', cuisine: 'Italian' };
+    mutation.mutate(newRestaurant);
   };
 
   return (
-      <div>
-          <button onClick={handleAddRestaurant}>Add Restaurant</button>
-          {mutation.isLoading && <p>Adding...</p>}
-          {mutation.isError && <p>Error adding restaurant: {mutation.error.message}</p>}
-          {mutation.isSuccess && <p>Restaurant added!</p>}
-      </div>
+    <div>
+      <button onClick={handleAddRestaurant}>Add Restaurant</button>
+      {mutation.isLoading && <p>Adding...</p>}
+      {mutation.isError && <p>Error adding restaurant: {mutation.error.message}</p>}
+      {mutation.isSuccess && <p>Restaurant added!</p>}
+    </div>
   );
 };
 
