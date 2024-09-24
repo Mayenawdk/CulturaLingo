@@ -15,9 +15,9 @@ const HomePage = () => {
             <div style={styles.rightColumn}>
                 <h2>Additional Resources</h2>
                 <ul style={styles.list}>
-                    <li><a href="#resource1">Resource 1</a></li>
-                    <li><a href="#resource2">Resource 2</a></li>
-                    <li><a href="#resource3">Resource 3</a></li>
+                    <li><a href="#resource1">Translator</a></li>
+                    <li><a href="#resource2">Faiths and Spiritual Practices</a></li>
+                    <li><a href="#resource3">Social Norms and Beauty Standards</a></li>
                 </ul>
             </div>
         </div>
