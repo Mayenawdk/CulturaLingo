@@ -70,7 +70,8 @@ const addRestaurant = async (newRestaurant) => {
   return response.json();
 };
 
-// Add a restaurant using mutations
+
+/// Add a restaurant using mutations
 const AddRestaurant = () => {
   const mutation = useMutation({
     mutationFn: addRestaurant, // The function to add the restaurant
