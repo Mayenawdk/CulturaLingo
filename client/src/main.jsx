@@ -2,7 +2,7 @@ import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './App.jsx';
 import './index.css';
-import User from './pages/User.jsx';
+import Users from './pages/User.jsx';
 import HomePage from './homePage.jsx';
 
 const router = createBrowserRouter([
@@ -14,12 +14,11 @@ const router = createBrowserRouter([
         index: true,
         element: <HomePage />
       },
-
-      {
-        index: true,
-        element: <User />
-      }
     ]    
+  },
+  {
+    path: '/user',
+    element: <Users />
   },
 ]);
 

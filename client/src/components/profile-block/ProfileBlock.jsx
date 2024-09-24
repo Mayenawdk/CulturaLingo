@@ -6,6 +6,7 @@ import { QUERY_USERS } from '../../utils/queries';
 import "./ProfileBlock.css";
 import { GET_USER } from "../../utils/query";
 import { useQuery } from '@apollo/client';
+import { Link } from 'react-router-dom';
 
 const ProfileBlock = () => {
     const [name, setName] = useState('');
@@ -75,7 +76,7 @@ const ProfileBlock = () => {
             </Row>
             <Row>
                 <Col>
-                    <a href="">Edit Profile</a>
+                <Link to="/user">Edit Profile</Link>
                 </Col>
             </Row>
         </Container>

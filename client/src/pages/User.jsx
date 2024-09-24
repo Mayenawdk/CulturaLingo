@@ -5,7 +5,9 @@ import { Container, Row, Col, Card, Image, Form, Button } from 'react-bootstrap'
 
 const Users = () => {
 
-    const { loading } = useQuery(QUERY_USERS);
+    // const { loading } = useQuery(QUERY_USERS);
+
+    const loading = false;
     const imgs = [ //Replace with images pulled from database
         {
             picture: "/icons/BatIcon.jpg",
