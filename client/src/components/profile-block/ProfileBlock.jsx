@@ -1,12 +1,12 @@
 import { Container, Row, Col, Card, Image } from 'react-bootstrap';
 import { useState } from 'react';
 import { useMutation } from '@apollo/client';
-
 import { ADD_USER } from '../../utils/mutations';
 import { QUERY_USERS } from '../../utils/queries';
 import "./ProfileBlock.css";
 import { GET_USER } from "../../utils/query";
 import { useQuery } from '@apollo/client';
+import { Link } from 'react-router-dom';
 
 const ProfileBlock = () => {
     const [name, setName] = useState('');
@@ -51,56 +51,34 @@ const ProfileBlock = () => {
                 <Col>
                     <Image src={user.img.picture} roundedCircle />
                 </Col>
-                <Card>
-                    <Card.Body>{user.favefood}</Card.Body>
-                </Card>
+                <Col>
+                    <Card>
+                        <Card.Title>Favorite Food?</Card.Title>  
+                        <Card.Body>{user.favefood}</Card.Body>
+                    </Card>
+                </Col>
             </Row>
             <Row>
                 <Col>
                     <Card>
+                        <Card.Title>Favorite Country?</Card.Title>  
                         <Card.Body>{user.favecountry}</Card.Body>
                     </Card>
                 </Col>
+            </Row>
+            <Row>
                 <Col>
                     <Card>
+                        <Card.Title>Favorite City?</Card.Title>  
                         <Card.Body>{user.favecity}</Card.Body>
                     </Card>
                 </Col>
             </Row>
             <Row>
                 <Col>
-                    <a href="">Edit Profile</a>
+                <Link to="/user">Edit Profile</Link>
                 </Col>
             </Row>
-
-
-
-
-            <Row>
-                <Col>
-                    <form className='flex-row justify-center justify-space-between-md align-center' onSubmit={handleAddUser}
-                    >
-                        <div className='col-12 col-lg-9'>
-                            <input placeholder='Add your profile name...' value={name} className='form-input w-100' onChange={(event) => setName(event.target.value)}
-                            />
-                        </div>
-                        <div className='col-12 col-lg-3'>
-                            <button className='btn btn-info btn-block py-3' type='submit'>
-                                Add Profile
-                            </button>
-                        </div>
-                        {error && (
-                            <div className='col-12 my-3 bg-danger text-white p-3'>
-                                Something went wrong...
-                            </div>
-                        )}
-
-                    </form>
-
-                </Col>
-            </Row>
-
-
         </Container>
 
     );

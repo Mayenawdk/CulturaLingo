@@ -1,12 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
     return (
         <header style={styles.header}>
             <h1 style={styles.logo}>CulturaLingo</h1>
             <div style={styles.buttonGroup}>
-                <button style={styles.button}>Sign-up</button>
-                <button style={styles.button}>Login</button>
+                <Link to= "/signup" style={styles.button}>Sign-Up</Link>
+                <Link to= "/login" style={styles.button}>Login</Link>
                 <button style={styles.button}>Logout</button>
             </div>
         </header>

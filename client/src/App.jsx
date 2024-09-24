@@ -100,7 +100,6 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <ApolloProvider client={client}>
         <Header />
-        <ProfileBlock />
         <div className='flex-column justify-flex-start min-100-vh'>
           <Outlet />
           <RestaurantList />

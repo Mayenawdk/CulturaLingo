@@ -1,7 +1,11 @@
 .card-body{
-    background-color:cadetblue;
+    background-color: #cdc1ff;
 }
 
 img.rounded-circle{
     max-width: 200px;
+}
+
+.card{
+    padding: 0;
 }

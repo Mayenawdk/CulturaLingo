@@ -2,6 +2,7 @@ import React from "react";
 import { Container, Row, Col, Card, Image, Form, Button } from 'react-bootstrap';
 import { GET_USER } from "../../utils/query";
 import {useQuery} from '@apollo/client';
+import { useState } from 'react';
 
 const Login = () => {
     const [userFormData, setUserFormData] = useState({ email: '', password: '' });
