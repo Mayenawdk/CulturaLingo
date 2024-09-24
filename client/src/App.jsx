@@ -5,13 +5,16 @@ import { useQuery, useMutation, QueryClient, QueryClientProvider } from '@tansta
 import './App.css';
 import ProfileBlock from './components/profile-block/ProfileBlock';
 import Header from './header';
+import React from 'react';
 
 const client = new ApolloClient({
-  uri: '/http://localhost:3001/graphql',
+  uri: 'http://localhost:3001/graphql',
   cache: new InMemoryCache(),
 });
 
-//function to fetch restaurant data
+const queryClient = new QueryClient();
+
+// Function to fetch restaurant data
 const fetchRestaurants = async () => {
   const response = await fetch('https://worldwide-restaurants.p.rapidapi.com/restaurants/list', {
       method: 'GET',
@@ -28,11 +31,11 @@ const fetchRestaurants = async () => {
   return response.json();
 };
 
-//display restaurant dataaa
+// Display restaurant data
 const RestaurantList = () => {
   const { data, error, isLoading } = useQuery(['restaurants'], fetchRestaurants);
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <p>Loading</p>;
   if (error) return <p>Error fetching data: {error.message}</p>;
 
   return (
@@ -46,16 +49,33 @@ const RestaurantList = () => {
   );
 };
 
-//add restaurant by using mutations 
+// Function to add a restaurant
+const addRestaurant = async (newRestaurant) => {
+  const response = await fetch('http://localhost:3001/api/restaurants', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(newRestaurant),
+  });
+
+  if (!response.ok) {
+    throw new Error('Failed to add restaurant');
+  }
+
+  return response.json();
+};
+
+//add a restaurant using mutations
 const AddRestaurant = () => {
-  const mutation = useMutation(AddRestaurant, {
+  const mutation = useMutation(addRestaurant, {
       onSuccess: () => {
           queryClient.invalidateQueries(['restaurants']);
       }
   });
 
   const handleAddRestaurant = () => {
-      const newRestaurant = { id: Date.now(), name: 'La Nonna', cuisine: 'Italian' };
+      const newRestaurant = { id: Date.now(), name: 'New Restaurant', cuisine: 'Italian' };
       mutation.mutate(newRestaurant);
   };
 
@@ -69,24 +89,20 @@ const AddRestaurant = () => {
   );
 };
 
-
-
-
 function App() {
   return (
-    <>
+    <QueryClientProvider client={queryClient}>
       <ApolloProvider client={client}>
         <Header />
         <ProfileBlock />
-          <div className='flex-column justify-flex-start min-100-vh'>
-            <Outlet />
-            <RestaurantList />
-            <AddRestaurant />
-          </div>
-     </ApolloProvider>
-
-    </>
-  )
+        <div className='flex-column justify-flex-start min-100-vh'>
+          <Outlet />
+          <RestaurantList />
+          <AddRestaurant />
+        </div>
+      </ApolloProvider>
+    </QueryClientProvider>
+  );
 }
 
-export default App
+export default App;

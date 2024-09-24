@@ -13,6 +13,7 @@ app.use(express.json());
 
 const typeDefs = require('./typeDefs');
 const resolvers = require('./resolver'); 
+const Restaurant = require('./models/Restaurant');
 
 // trying this, keep seeing if react app and apollo server are on different ports must use cors middleware
 app.use(cors());
