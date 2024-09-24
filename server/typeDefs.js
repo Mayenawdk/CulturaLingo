@@ -19,7 +19,7 @@ const typeDefs = gql`
   type City {
     id: ID!
     name: String!
-    country: Country!
+    country: Country!   # This establishes a relationship to Country
   }
 
   type Country {
@@ -40,19 +40,19 @@ const typeDefs = gql`
     language(id: ID!): Language
     cities: [City]
     countries: [Country]
-    city(id: ID): City
-    country(id: ID): Country
-    Foods: [Food]
-    Food(id: ID!): Food
+    city(id: ID!): City
+    country(id: ID!): Country
+    foods: [Food]        
+    food(id: ID!): Food   
   }
 
   type Mutation {
     addUser(name: String!, email: String!): User
     addLanguage(name: String!): Language
-    addCity(name: String!, countryid: ID!): City
+    addCity(name: String!, countryId: ID!): City   # Changed countryid to countryId for clarity
     addCountry(name: String!): Country
     addFood(name: String!): Food
-    updateFood(name: String!): Food
+    updateFood(id: ID!, name: String!): Food  # Added id to update Food
   }
 `;
 
