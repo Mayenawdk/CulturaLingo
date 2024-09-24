@@ -28,7 +28,7 @@ const fetchRestaurants = async () => {
   return response.json();
 };
 
-//display restaurant data
+//display restaurant dataaa
 const RestaurantList = () => {
   const { data, error, isLoading } = useQuery(['restaurants'], fetchRestaurants);
 
@@ -46,7 +46,7 @@ const RestaurantList = () => {
   );
 };
 
-//adding a restaurant by using mutations 
+//add restaurant by using mutations 
 const AddRestaurant = () => {
   const mutation = useMutation(AddRestaurant, {
       onSuccess: () => {
