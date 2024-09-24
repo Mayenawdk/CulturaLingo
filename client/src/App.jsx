@@ -35,8 +35,8 @@ const fetchRestaurants = async () => {
 // Display restaurant data
 const RestaurantList = () => {
   const { data, error, isLoading } = useQuery({
-    queryKey: ['restaurants'], // The key for the query
-    queryFn: fetchRestaurants,  // The function to fetch data
+    queryKey: ['restaurants'], 
+    queryFn: fetchRestaurants,  
   });
 
   if (isLoading) return <p>Loading...</p>;
@@ -100,7 +100,6 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <ApolloProvider client={client}>
         <Header />
-        <ProfileBlock />
         <div className='flex-column justify-flex-start min-100-vh'>
           <Outlet />
           <RestaurantList />
