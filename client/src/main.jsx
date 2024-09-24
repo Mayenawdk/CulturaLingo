@@ -4,6 +4,8 @@ import App from './App.jsx';
 import './index.css';
 import Users from './pages/User.jsx';
 import HomePage from './homePage.jsx';
+import Login from './components/login/login.jsx';
+import Signup from './components/signup/signup.jsx';
 
 const router = createBrowserRouter([
   {
@@ -19,6 +21,14 @@ const router = createBrowserRouter([
   {
     path: '/user',
     element: <Users />
+  },
+  {
+    path: '/signup',
+    element: <Signup />
+  },
+  {
+    path: '/Login',
+    element: <Login />
   },
 ]);
 
