@@ -15,10 +15,13 @@
   "license": "ISC",
   "dependencies": {
     "@apollo/server": "^4.11.0",
+    "@tanstack/react-query": "^5.56.2",
     "apollo-server": "^3.13.0",
     "apollo-server-express": "^3.13.0",
     "axios": "^1.7.7",
+    "cors": "^2.8.5",
     "dotenv": "^16.4.5",
+    "express": "^4.21.0",
     "graphql": "^16.9.0",
     "graphql-playground-middleware-express": "^1.7.23",
     "mongodb": "^6.0.0",

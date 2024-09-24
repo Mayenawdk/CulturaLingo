@@ -13,6 +13,7 @@ app.use(express.json());
 
 const typeDefs = require('./typeDefs');
 const resolvers = require('./resolver'); 
+const Restaurant = require('./models/Restaurant');
 
 // trying this, keep seeing if react app and apollo server are on different ports must use cors middleware
 app.use(cors());
@@ -25,6 +26,18 @@ const server = new ApolloServer({
   playground: true,
   csrfPrevention: false,
 });
+
+//   api endpoint 
+app.get('/api/restaurants', async (req, res) => {
+  try {
+    const restaurants = await Restaurant.find();
+    res.json(restaurants);
+  } catch (error) {
+    console.error('Error fetching restaurants:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
 
 async function startServer() {
   await server.start();
@@ -39,7 +52,7 @@ startServer().catch(err => {
   console.error('Error starting the server', err);
 });
 
-//deleted comments
+
 
 
 
