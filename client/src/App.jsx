@@ -35,8 +35,8 @@ const fetchRestaurants = async () => {
 // Display restaurant data
 const RestaurantList = () => {
   const { data, error, isLoading } = useQuery({
-    queryKey: ['restaurants'], // The key for the query
-    queryFn: fetchRestaurants,  // The function to fetch data
+    queryKey: ['restaurants'], 
+    queryFn: fetchRestaurants,  
   });
 
   if (isLoading) return <p>Loading...</p>;
