@@ -5,7 +5,7 @@ import { useQuery, useMutation, QueryClient, QueryClientProvider } from '@tansta
 import './App.css';
 import ProfileBlock from './components/profile-block/ProfileBlock';
 import Header from './header';
-import React from 'react';
+// import React from 'react';
 
 const client = new ApolloClient({
   uri: 'http://localhost:3001/graphql',
