@@ -15,9 +15,9 @@ const HomePage = () => {
             <div style={styles.rightColumn}>
                 <h2>Additional Resources</h2>
                 <ul style={styles.list}>
-                    <li><a href="#resource1">Translator</a></li>
+                    <li><a href="https://translate.google.com/;%29?sl=auto&tl=en&op=translate">Translator</a></li>
                     <li><a href="#resource2">Faiths and Spiritual Practices</a></li>
-                    <li><a href="#resource3">Social Norms and Beauty Standards</a></li>
+                    <li><a href= "https://www.beautystandards.org/">Social Norms and Beauty Standards</a></li>
                 </ul>
             </div>
         </div>
@@ -54,11 +54,14 @@ const styles = {
         boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
     },
     list: {
+        display: 'grid',
+        gridTemplateRows: 'repeat(3, 1fr)', // Adjust the number based on your items
         listStyleType: 'none',
         padding: '0',
     },
     listItem: {
-        marginBottom: '10px',
+        textAlign: 'center', // Center text inside li
+        padding: '10px', // Optional: Add some padding
     },
 };
 
