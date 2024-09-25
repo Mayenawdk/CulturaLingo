@@ -4,8 +4,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useQuery, useMutation, QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import './App.css';
 import ProfileBlock from './components/profile-block/ProfileBlock';
-import Header from './header';
-// import React from 'react';
+import Header from './components/header/header.jsx';
+import React from 'react';
 
 // Create the query client
 const queryClient = new QueryClient();
