@@ -3,8 +3,9 @@ import { Outlet } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useMutation, QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import './App.css';
+import ProfileBlock from './components/profile-block/ProfileBlock';
 import Header from './header';
-import React, { useState } from 'react';
+import React from 'react';
 
 // Create the query client
 const queryClient = new QueryClient();
