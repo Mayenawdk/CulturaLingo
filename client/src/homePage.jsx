@@ -1,5 +1,6 @@
 import React from 'react';
 import ProfileBlock from './components/profile-block/ProfileBlock';
+import Header from './components/header/header.jsx';
 
 const HomePage = () => {
     return (
