@@ -1,7 +1,7 @@
 import React from 'react';
 import ProfileBlock from './components/profile-block/ProfileBlock';
-import DropDown from './components/dropDown/dropDown';
 import Header from './components/header/header.jsx';
+import DropDown from './components/dropDown/dropDown';
 
 const HomePage = () => {
     return (
