@@ -1,11 +1,12 @@
 import React from "react";
 import { Container, Row, Col, Card, Image, Form, Button } from 'react-bootstrap';
-import { GET_USER } from "../../utils/query";
-import {useQuery} from '@apollo/client';
+import { LOGIN_USER } from "../../utils/mutations";
+import {useMutation, useQuery} from '@apollo/client';
 import { useState } from 'react';
 
 const Login = () => {
-    const [userFormData, setUserFormData] = useState({ email: '', password: '' });
+    const [userFormData, setUserFormData] = useState({ email: ''});
+    const [login, {error}] = useMutation(LOGIN_USER);
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -33,21 +34,20 @@ const Login = () => {
     
         setUserFormData({
           email: '',
-          password: '',
         });
       };
 
     return(
         <Container>
-            <Form controlId="loginform">
+            <Form controlId="loginform" onSubmit={handleFormSubmit}>
             <Form.Group>
                     <Form.Label>Email</Form.Label>
-                    <Form.Control type="email" placeholder="Enter email" />
+                    <Form.Control type="email" placeholder="Enter email" onChange={handleInputChange} />
                 </Form.Group>
-                <Form.Group>
+                {/* <Form.Group>
                     <Form.Label>Password</Form.Label>
                     <Form.Control type="password" placeholder="Enter password" />
-                </Form.Group>
+                </Form.Group> */}
                 <Button variant="primary" type="submit">Submit</Button>
             </Form>
         </Container>
