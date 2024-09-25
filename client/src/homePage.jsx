@@ -1,5 +1,6 @@
 import React from 'react';
 import ProfileBlock from './components/profile-block/ProfileBlock';
+import DropDown from './components/dropDown/dropDown';
 
 const HomePage = () => {
     return (
@@ -8,8 +9,9 @@ const HomePage = () => {
                 <ProfileBlock />
             </div>
             <div style={styles.centerColumn}>
-                <h2>Main Content</h2>
+                <h2>Main Content</h2>                   
                 <p>Welcome to CulturaLingo! Here you can explore and learn about different cultures.</p>
+                 <DropDown />
                 {/* Add more components or content here */}
             </div>
             <div style={styles.rightColumn}>
