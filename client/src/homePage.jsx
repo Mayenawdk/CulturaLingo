@@ -16,8 +16,8 @@ const HomePage = () => {
                 <h2>Additional Resources</h2>
                 <ul style={styles.list}>
                     <li><a href="https://translate.google.com/;%29?sl=auto&tl=en&op=translate">Translator</a></li>
-                    <li><a href="#resource2">Faiths and Spiritual Practices</a></li>
-                    <li><a href= "https://www.beautystandards.org/">Social Norms and Beauty Standards</a></li>
+                    <li><a href="https://www.cia.gov/the-world-factbook/field/religions/">Faiths and Spiritual Practices</a></li>
+                    <li><a href="https://www.beautystandards.org/">Social Norms and Beauty Standards</a></li>
                 </ul>
             </div>
         </div>
