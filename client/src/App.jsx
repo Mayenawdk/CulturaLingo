@@ -5,7 +5,7 @@ import { useMutation, QueryClient, QueryClientProvider } from '@tanstack/react-q
 import './App.css';
 import ProfileBlock from './components/profile-block/ProfileBlock';
 import Header from './components/header/header.jsx';
-import React from 'react';
+import React, {useState} from 'react';
 
 // Create the query client
 const queryClient = new QueryClient();
