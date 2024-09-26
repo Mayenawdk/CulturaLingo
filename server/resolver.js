@@ -2,6 +2,7 @@ const User = require('./models/User');
 const Language = require('./models/languages');
 const Food = require('./models/Food');
 const axios = require ('axios');
+const {signToken} = require('./utils/auth');
 
 const API_URL = 'https://worldwide-restaurants.p.rapidapi.com/';
 const API_KEY = '449134927emsh5c9b7a554d90d46p17b74djsnca468ddc31ea';
@@ -29,6 +30,16 @@ const resolvers = {
     },
   },
   Mutation: {
+    login: async (parent, { email }) => {
+      const user = await User.findOne({ email });
+      // check if user exists with email and credentials
+      if (!user) {
+        throw new AuthenticationError("Incorrect credentials");
+      }
+      
+      const token = signToken(user);
+      return { token, user };
+    },
     addUser: async (parent, args) => {
       const user = new User({
         name: args.name,
