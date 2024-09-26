@@ -33,6 +33,10 @@ const typeDefs = gql`
     location: String!  
   }
 
+   type Auth{
+    token: ID!
+  }
+
   type Query {
     users: [User]
     user(id: ID!): User
@@ -47,6 +51,7 @@ const typeDefs = gql`
   }
 
   type Mutation {
+    login(email: String!):Auth
     addUser(name: String!, email: String!): User
     addLanguage(name: String!): Language
     addCity(name: String!, countryId: ID!): City   # Changed countryid to countryId for clarity

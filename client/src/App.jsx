@@ -5,8 +5,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useMutation, QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import './App.css';
 import ProfileBlock from './components/profile-block/ProfileBlock';
-import Header from './components/header/header';
+import Header from './components/header/header.jsx'; // Using .jsx as in one of the branches
 import DropDown from './components/dropDown/DropDown'; 
+
+
 
 // Create the query client
 const queryClient = new QueryClient();

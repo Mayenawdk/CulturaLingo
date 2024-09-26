@@ -53,7 +53,7 @@ const ProfileBlock = () => {
                 </Col>
                 <Col>
                     <Card>
-                        <Card.Title>Favorite Food?</Card.Title>  
+                        <Card.Title>Favorite Currency?</Card.Title>  
                         <Card.Body>{user.favefood}</Card.Body>
                     </Card>
                 </Col>
